@@ -3,7 +3,7 @@
 ;; Copyright © 2017, by Mrinal Purohit
 
 ;; Author: Mrinal Purohit (iammrinal0@gmail.com)
-;; Version: 0.0.3
+;; Version: 0.0.4
 ;; Created: 27 Apr 2017
 ;; Keywords: languages, clean
 ;; Homepage: https://github.com/iammrinal0/clean-mode
@@ -25,7 +25,9 @@
 
 ;;; Code:
 
-(defconst clean-mode-version-number "0.0.3"
+(require 'cl-lib)
+(require 'company)
+(defconst clean-mode-version-number "0.0.4"
   "Clean Mode version number.")
 
 ;; define several category of keywords
@@ -68,6 +70,22 @@
         (modify-syntax-entry ?* ". 23" synTable)
         synTable))
 
+(defun clean-company-backend (command &optional arg &rest ignored)
+  "Interactive completion insertion where COMMAND is command received.
+When ARG is non-nil, compare with keywords for completion.
+IGNORED is ignored."
+  (interactive (list 'interactive))
+
+  (cl-case command
+    (interactive (company-begin-backend 'clean-company-backend))
+    (prefix (and (eq major-mode 'clean-mode)
+                 (company-grab-symbol)))
+
+    (candidates
+     (cl-remove-if-not
+      (lambda (c) (string-prefix-p arg c))
+      (append clean-keywords clean-builtins clean-constants clean-preprocessors)))))
+
 ;;;###autoload
 (define-derived-mode clean-mode prog-mode "clean"
   "clean-mode is a major mode for editing clean language files."
@@ -77,7 +95,9 @@
   (setq-local comment-start "/*")
   (setq-local comment-start-skip "/\\*+[ \t]*")
   (setq-local comment-end "*\/")
-  (setq-local comment-end-skip "[ \t]*\\*+/"))
+  (setq-local comment-end-skip "[ \t]*\\*+/")
+  (add-to-list 'company-backends 'clean-company-backend)
+  (company-mode))
 
 ;; add the mode to the `features' list
 (provide 'clean)
