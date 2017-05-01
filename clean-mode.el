@@ -3,7 +3,7 @@
 ;; Copyright © 2017, by Mrinal Purohit
 
 ;; Author: Mrinal Purohit (iammrinal0@gmail.com)
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Created: 27 Apr 2017
 ;; Keywords: languages, clean
 ;; Homepage: https://github.com/iammrinal0/clean-mode
@@ -25,18 +25,20 @@
 
 ;;; Code:
 
-(defconst clean-mode-version-number "0.0.1"
+(defconst clean-mode-version-number "0.0.2"
   "Clean Mode version number.")
 
 ;; define several category of keywords
 (defvar clean-keywords '("if" "then" "else" "return" "in" "let" "do"))
 (defvar clean-constants '("false" "true" "null" "node-core" "browser-core"))
-(defvar clean-builtins '("getLine" "putLine"  "defineProp" "delete" "readFile" "writeFile" "maybeTrue" "maybeFalse" "maybeNull" "maybeUndefined" "maybeErr" "require" "include" "IO" "print"))
+(defvar clean-builtins '("getLine" "putLine"  "defineProp" "delete" "readFile" "writeFile" "maybeTrue" "maybeFalse" "maybeNull" "maybeUndefined" "maybeErr" "require" "IO" "print"))
+(defvar clean-preprocessors '("include"))
 
 ;; generate regex string for each category of keywords
 (defvar clean-keywords-regexp (regexp-opt clean-keywords 'words))
 (defvar clean-constants-regexp (regexp-opt clean-constants 'words))
 (defvar clean-builtins-regexp (regexp-opt clean-builtins 'words))
+(defvar clean-preprocessors-regexp (regexp-opt clean-preprocessors 'words))
 
 ;; create the list for font-lock.
 ;; each category of keyword is given a particular face
@@ -50,6 +52,7 @@
         (,clean-keywords-regexp . font-lock-keyword-face)
         (,clean-constants-regexp . font-lock-constant-face)
         (,clean-builtins-regexp . font-lock-builtin-face)
+        (,clean-preprocessors-regexp . font-lock-preprocessor-face)
         ;; (,"\\(\\([0-9]+.?[0-9]*\\)\\|\\([0-9]+\\)\\)\\(\\(E\\|e\\)\\(+\\|-\\)?[0-9]+\\)?" . font-lock-warning-face)
         ;; note: order above matters, because once colored, that part won't change.
         ;; in general, longer words first
