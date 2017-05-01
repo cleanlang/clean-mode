@@ -3,7 +3,7 @@
 ;; Copyright © 2017, by Mrinal Purohit
 
 ;; Author: Mrinal Purohit (iammrinal0@gmail.com)
-;; Version: 0.0.2
+;; Version: 0.0.3
 ;; Created: 27 Apr 2017
 ;; Keywords: languages, clean
 ;; Homepage: https://github.com/iammrinal0/clean-mode
@@ -25,7 +25,7 @@
 
 ;;; Code:
 
-(defconst clean-mode-version-number "0.0.2"
+(defconst clean-mode-version-number "0.0.3"
   "Clean Mode version number.")
 
 ;; define several category of keywords
@@ -46,7 +46,7 @@
       `(
         (,"^\\(\/\/\\)\\(.*\\)\\(\n\\|\\)$" . font-lock-comment-face) ;; For single line comments of the form // text
         (,"\\('[^\\\n']*\\(?:\\.[^\\\n']*\\)*'\\)" . font-lock-string-face) ;; For strings of the form 'val'
-        (,"\\([a-z]+\\)\\(\\(\s\\([a-z]+\\)\\)+\\)\\(\s=\\)" (1 font-lock-function-name-face) (2 font-lock-variable-name-face)) ;; For function names of the form `func a b ='
+        (,"\\([a-z]+\\)\\(\\(\s\\(\\([a-z]+\\|[0-9]+\\)[a-zA-Z0-9]*\\)\\)+\\)\\(\s=\\)" (1 font-lock-function-name-face) (2 font-lock-variable-name-face)) ;; For function names of the form `func a b ='
         (,"\\([a-z]+[a-zA-Z0-9]*\\)\\(\s=\\)" . (1 font-lock-variable-name-face)) ;; For variables of the form `a ='
         (,"\\(\\([a-z]+[a-zA-Z0-9]*\s\\)+\\)\\(<-\\)" . (1 font-lock-variable-name-face)) ;; For variables in reverse bind of the form `req res <-'
         (,clean-keywords-regexp . font-lock-keyword-face)
