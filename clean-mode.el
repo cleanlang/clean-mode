@@ -48,13 +48,13 @@
       `(
         (,"^\\(\/\/\\)\\(.*\\)\\(\n\\|\\)$" . font-lock-comment-face) ;; For single line comments of the form // text
         (,"\\('[^\\\n']*\\(?:\\.[^\\\n']*\\)*'\\)" . font-lock-string-face) ;; For strings of the form 'val'
-        (,"\\([a-z]+\\)\\(\\(\s\\(\\([a-z]+\\|[0-9]+\\)[a-zA-Z0-9]*\\)\\)+\\)\\(\s=\\)" (1 font-lock-function-name-face) (2 font-lock-variable-name-face)) ;; For function names of the form `func a b ='
-        (,"\\([a-z]+[a-zA-Z0-9]*\\)\\(\s=\\)" . (1 font-lock-variable-name-face)) ;; For variables of the form `a ='
-        (,"\\(\\([a-z]+[a-zA-Z0-9]*\s\\)+\\)\\(<-\\)" . (1 font-lock-variable-name-face)) ;; For variables in reverse bind of the form `req res <-'
         (,clean-keywords-regexp . font-lock-keyword-face)
         (,clean-constants-regexp . font-lock-constant-face)
         (,clean-builtins-regexp . font-lock-builtin-face)
         (,clean-preprocessors-regexp . font-lock-preprocessor-face)
+        (,"\\([a-z]+\\)\\(\\(\s\\(\\([a-z]+\\|[0-9]+\\)[a-zA-Z0-9]*\\)\\)+\\)\\(\s=\\)" (1 font-lock-function-name-face) (2 font-lock-variable-name-face)) ;; For function names of the form `func a b ='
+        (,"\\([a-z]+[a-zA-Z0-9]*\\)\\(\s=\\)" . (1 font-lock-variable-name-face)) ;; For variables of the form `a ='
+        (,"\\(\\([a-z]+[a-zA-Z0-9]*\s\\)+\\)\\(<-\\)" . (1 font-lock-variable-name-face)) ;; For variables in reverse bind of the form `req res <-'
         ;; (,"\\(\\([0-9]+.?[0-9]*\\)\\|\\([0-9]+\\)\\)\\(\\(E\\|e\\)\\(+\\|-\\)?[0-9]+\\)?" . font-lock-warning-face)
         ;; note: order above matters, because once colored, that part won't change.
         ;; in general, longer words first
