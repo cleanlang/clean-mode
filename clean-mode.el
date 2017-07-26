@@ -3,10 +3,10 @@
 ;; Copyright © 2017, by Mrinal Purohit
 
 ;; Author: Mrinal Purohit (iammrinal0@gmail.com)
-;; Version: 0.0.5
+;; Version: 0.0.6
 ;; Created: 27 Apr 2017
 ;; Keywords: languages, clean
-;; Homepage: https://github.com/iammrinal0/clean-mode
+;; Homepage: https://github.com/cleanlang/clean-mode
 
 ;; This file is not part of GNU Emacs.
 
@@ -19,7 +19,7 @@
 ;; This mode adds basic support to Emacs for writing software using
 ;; the Clean programming language, available at:
 ;;
-;;     https://github.com/geekskool/clean
+;;     https://github.com/cleanlang/clean
 ;;
 ;;
 
@@ -27,7 +27,7 @@
 
 (require 'cl-lib)
 (require 'company)
-(defconst clean-mode-version-number "0.0.5"
+(defconst clean-mode-version-number "0.0.6"
   "Clean Mode version number.")
 
 ;; define several category of keywords
