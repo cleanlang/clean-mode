@@ -3,7 +3,7 @@
 ;; Copyright © 2017, by Mrinal Purohit
 
 ;; Author: Mrinal Purohit (iammrinal0@gmail.com)
-;; Version: 0.0.4
+;; Version: 0.0.5
 ;; Created: 27 Apr 2017
 ;; Keywords: languages, clean
 ;; Homepage: https://github.com/iammrinal0/clean-mode
@@ -27,13 +27,13 @@
 
 (require 'cl-lib)
 (require 'company)
-(defconst clean-mode-version-number "0.0.4"
+(defconst clean-mode-version-number "0.0.5"
   "Clean Mode version number.")
 
 ;; define several category of keywords
 (defvar clean-keywords '("if" "then" "else" "return" "in" "let" "do"))
 (defvar clean-constants '("false" "true" "null" "node-core" "browser-core"))
-(defvar clean-builtins '("getLine" "putLine"  "defineProp" "delete" "readFile" "writeFile" "maybeTrue" "maybeFalse" "maybeNull" "maybeUndefined" "maybeErr" "require" "IO" "print"))
+(defvar clean-builtins '("getLine" "putLine"  "defineProp" "delete" "maybeTrue" "maybeFalse" "maybeNull" "maybeUndefined" "maybeErr" "require" "IO" "print"))
 (defvar clean-preprocessors '("include"))
 
 ;; generate regex string for each category of keywords
